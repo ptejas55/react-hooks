@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function App() {
   const [count, setCount] = useState(0);
@@ -7,6 +7,18 @@ export default function App() {
     setCount(count + 1);
     setColor('pink');
   }
+  useEffect(() => {
+    console.log('Runs on every render');
+  }); //Runs on every render
+  useEffect(() => {
+    console.log('Runs only on the first render');
+  }, []); //Runs only on the first render
+  useEffect(() => {
+    console.log('run on count');
+  }, [count]); //And any time any dependency value changes
+  useEffect(() => {
+    console.log('run on color');
+  }, [color]); //And any time any dependency value changes
   return (
     <>
       <button
